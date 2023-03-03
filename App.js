@@ -1,19 +1,22 @@
 import React from "react";
 import { Text, View } from "react-native";
-import { Tab } from "@rneui/themed";
+import NavTabs from "./components/NavTabs";
 
 const App = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Try editing me! 🎉</Text>
-    </View>
+    <>
+      <View style={""}>
+        <Text>Try editing me! 🎉</Text>
+      </View>
+      <NavTabs />
+    </>
   );
 };
 
 export default App;
+
+const AppStyle = {
+  flex: 1,
+  justifyContent: "center",
+  alignItems: "center",
+};
