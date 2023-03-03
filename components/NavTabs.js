@@ -44,7 +44,7 @@ function NavTabs() {
           title="Hello"
           titleProps={{}}
         >
-          <Text>TODO</Text>
+          <Text>Todo's</Text>
         </Tab.Item>
         <Tab.Item
           type="outline"
