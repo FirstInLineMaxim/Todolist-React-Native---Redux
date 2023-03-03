@@ -4,6 +4,7 @@ import { FlatList, KeyboardAvoidingView, ScrollView, View } from "react-native";
 import TaskItem from "./TaskItem";
 import { StyleSheet } from "react-native";
 import InputKeyboard from "../InputKeyboard";
+import { useDispatch, useSelector } from "react-redux";
 
 const styles = StyleSheet.create({
   container: {
@@ -18,13 +19,18 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
 });
+
 export default function Todo() {
   const [tasks, setTasks] = useState([
     { id: 1, task: "asdasd", checked: true },
     { id: 2, task: "asdasd", checked: true },
     { id: 3, task: "asdasd", checked: false },
   ]);
-
+  //Gets Value from Store
+  // const counte = useSelector((state) => state.counter.value);
+  // console.log(counte);
+  //Used to create an Action stored in store.reducer
+  const dispatch = useDispatch();
   function addTask(task) {
     const useIds = tasks.map((entry) => entry.id);
     //Checks what the biggest Id in the Array

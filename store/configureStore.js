@@ -1,5 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
+import messageReducer from "./counterSlice";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    message: messageReducer,
+  },
 });
