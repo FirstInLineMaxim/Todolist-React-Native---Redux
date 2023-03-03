@@ -6,7 +6,10 @@ import { StyleSheet } from "react-native";
 import InputKeyboard from "../InputKeyboard";
 import { useDispatch, useSelector } from "react-redux";
 import { setChecked, setTasks } from "../../store/todoSlice";
-
+/**
+ * TODO:Make the list items swipable as a bonus
+ * https://reactnativeelements.com/docs/components/listItem_swipeable#props
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -22,12 +25,13 @@ const styles = StyleSheet.create({
 });
 
 export default function Todo() {
+  //the State of our Redux todo
   const tasks = useSelector((state) => state.todo);
-  // console.log(reduxState);
+  // dispatch a Reducer which handels the state
   const dispatch = useDispatch();
+
   const addTask = (task) => {
     const useIds = tasks.map((entry) => entry.id);
-    console.log("useIds", useIds.length);
     //Checks what the biggest Id in the Array
     const nextIndex = () => {
       //Check if task are present
@@ -37,30 +41,6 @@ export default function Todo() {
     };
     dispatch(setTasks({ id: nextIndex(), task: task, checked: false }));
   };
-
-  // function addTask(task) {
-  //   const useIds = tasks.map((entry) => entry.id);
-
-  //   //Checks what the biggest Id in the Array
-  //   const nextIndex = Math.max(...useIds) + 1;
-  //   setTasks((prev) => [
-  //     ...prev,
-  //     { id: nextIndex, task: task, checked: false },
-  //   ]);
-  // }
-  // function handleCheck(id) {
-  //   setTasks(
-  //     tasks.map((entry) => {
-  //       if (entry.id === id) {
-  //         // Create a *new* object with changes
-  //         return { ...entry, checked: !entry.checked };
-  //       } else {
-  //         // No changes
-  //         return entry;
-  //       }
-  //     })
-  //   );
-  // }
   function handleCheck(id) {
     dispatch(setChecked(id));
   }
