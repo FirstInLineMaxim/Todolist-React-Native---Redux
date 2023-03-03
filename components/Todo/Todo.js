@@ -24,6 +24,7 @@ export default function Todo() {
     { id: 2, task: "asdasd", checked: true },
     { id: 3, task: "asdasd", checked: false },
   ]);
+
   function addTask(task) {
     const useIds = tasks.map((entry) => entry.id);
     //Checks what the biggest Id in the Array
