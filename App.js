@@ -1,20 +1,55 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import React, { Component } from "react";
+import { StyleSheet, View, Button, Text } from "react-native";
+import { connect } from "react-redux";
+import { changeCount } from "./actions/counts";
+import { bindActionCreators } from "redux";
+
+class App extends Component {
+  decrementCount() {
+    let { count, actions } = this.props;
+    count--;
+    actions.changeCount(count);
+  }
+  incrementCount() {
+    let { count, actions } = this.props;
+    count++;
+    actions.changeCount(count);
+  }
+  render() {
+    const { count } = this.props;
+    return (
+      <View styles={styles.container}>
+        <Button title="increment" onPress={() => this.incrementCount()} />
+        <Text>{count}</Text>
+        <Button title="decrement" onPress={() => this.decrementCount()} />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
+
+const mapStateToProps = (state) => ({
+  count: state.count,
+});
+
+const ActionCreators = Object.assign({}, changeCount);
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(ActionCreators, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
