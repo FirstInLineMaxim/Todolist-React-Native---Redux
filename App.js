@@ -1,22 +1,26 @@
 import React from "react";
 import { Text, View } from "react-native";
+import { NativeRouter, Route, Routes } from "react-router-native";
 import NavTabs from "./components/NavTabs";
+import Settings from "./components/Settings/Settings";
+import Todo from "./components/Todo/Todo";
 
 const App = () => {
   return (
-    <>
-      <View style={""}>
-        <Text>Try editing me! 🎉</Text>
+    <NativeRouter>
+      <View style={AppStyle}>
+        <NavTabs />
+        <Routes>
+          <Route path="/" element={<Todo />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
       </View>
-      <NavTabs />
-    </>
+    </NativeRouter>
   );
 };
 
 export default App;
 
 const AppStyle = {
-  flex: 1,
-  justifyContent: "center",
-  alignItems: "center",
+  top: 40,
 };
