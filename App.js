@@ -1,11 +1,11 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { Provider } from "react-redux";
 import { NativeRouter, Route, Routes } from "react-router-native";
 import NavTabs from "./components/NavTabs";
 import Settings from "./components/Settings/Settings";
 import Todo from "./components/Todo/Todo";
-
+import { store } from "./store/configureStore";
 const App = () => {
   return (
     <NativeRouter>
