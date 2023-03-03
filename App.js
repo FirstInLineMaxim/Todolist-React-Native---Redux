@@ -23,4 +23,5 @@ export default App;
 
 const AppStyle = {
   top: 40,
+  flex: 1,
 };
