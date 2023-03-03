@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text } from "react-native";
 
+import { ListItem } from "@rneui/themed";
 export default function Todo() {
-  return <Text>Todo</Text>;
+  const [checked, setChecked] = useState({ task: "", checked: "" });
+  return <></>;
 }
