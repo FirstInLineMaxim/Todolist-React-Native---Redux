@@ -1,4 +1,5 @@
 import { ListItem } from "@rneui/base";
+import { Button } from "@rneui/themed";
 import React from "react";
 import { StyleSheet } from "react-native";
 
@@ -8,9 +9,26 @@ const styles = StyleSheet.create({
     color: "grey",
   },
 });
-export default function TaskItem({ data, handleCheck }) {
+export default function TaskItem({ data, handleCheck, deleteEntry }) {
   return (
-    <ListItem value="test" bottomDivider>
+    <ListItem.Swipeable
+      leftContent={(reset) => (
+        <Button
+          title="Info"
+          onPress={() => reset()}
+          icon={{ name: "info", color: "white" }}
+          buttonStyle={{ minHeight: "100%" }}
+        />
+      )}
+      rightContent={(reset) => (
+        <Button
+          title="Delete"
+          onPress={() => deleteEntry(data.id)}
+          icon={{ name: "delete", color: "white" }}
+          buttonStyle={{ minHeight: "100%", backgroundColor: "red" }}
+        />
+      )}
+    >
       <ListItem.CheckBox
         // Use ThemeProvider to change the defaults of the checkbox
         // onPress={() => setTask()}
@@ -25,6 +43,7 @@ export default function TaskItem({ data, handleCheck }) {
           {data.task}
         </ListItem.Title>
       </ListItem.Content>
-    </ListItem>
+      <ListItem.Chevron />
+    </ListItem.Swipeable>
   );
 }

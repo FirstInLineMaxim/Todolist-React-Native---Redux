@@ -18,8 +18,13 @@ const todoSlice = createSlice({
         todo.checked = !todo.checked;
       }
     },
+    delTask(state, action) {
+      const id = action.payload;
+
+      return state.filter((ele) => ele.id !== id);
+    },
   },
 });
 
-export const { setTasks, setChecked } = todoSlice.actions;
+export const { setTasks, setChecked, delTask } = todoSlice.actions;
 export default todoSlice.reducer;

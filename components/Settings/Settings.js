@@ -94,8 +94,9 @@ const Settings = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        {DATA.map((item) => (
+        {DATA.map((item, i) => (
           <SettingsListSection
+            key={i}
             section={item}
             title={item.title}
             icon={item.icon}

@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     textAlign: "left",
     width: 150,
-    padding: 5,
+
     borderBottomWidth: 1,
     borderColor: "#df6c36",
     fontSize: 20,
@@ -85,7 +85,7 @@ const SettingsListSection = ({ title, icon, item, section }) => {
         <Text style={styles.sectionTitle}>{title}</Text>
       </View>
       {item.map((ele, i) => (
-        <RenderItem item={ele} index={i} section={section} />
+        <RenderItem key={i} item={ele} index={i} section={section} />
       ))}
     </>
   );

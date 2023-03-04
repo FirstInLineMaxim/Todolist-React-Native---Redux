@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-native";
 const getPath = (index) => {
   switch (index) {
     case 0:
-      return "/";
+      return "/todo";
     case 1:
       return "/settings";
     default:

@@ -1,3 +1,4 @@
+import { Button, Icon } from "@rneui/themed";
 import React, { useState } from "react";
 import {
   View,
@@ -10,20 +11,31 @@ import {
 const InputKeyboard = ({ addTask }) => {
   const [input, setInput] = useState();
   const handleSubmit = () => {
-    addTask(input);
-    setInput("");
+    if (input !== "") {
+      addTask(input);
+      setInput("");
+    }
   };
   return (
     <View style={styles.container}>
-      <KeyboardAvoidingView behavior="padding">
+      <KeyboardAvoidingView>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.inputContainer}>
             <TextInput
+              selectionColor={"#df6c36"}
               placeholder="Whats on your mind"
               style={styles.input}
               onChangeText={(e) => setInput(e)}
               onSubmitEditing={() => handleSubmit()}
               value={input}
+            />
+
+            <Icon
+              style={styles.add}
+              name="add-circle"
+              type="Ionicons"
+              color="#df6c36"
+              onPress={() => handleSubmit()}
             />
           </View>
         </TouchableWithoutFeedback>
@@ -33,14 +45,15 @@ const InputKeyboard = ({ addTask }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 0.2,
+  container: {},
+  inputContainer: {
+    flexDirection: "row",
   },
   input: {
-    paddingLeft: 15,
-    paddingRight: 15,
-    width: "100%",
+    flex: 1,
+    padding: 10,
     color: "#000",
   },
+  add: { flex: 1, justifyContent: "center", padding: 10 },
 });
 export default InputKeyboard;
