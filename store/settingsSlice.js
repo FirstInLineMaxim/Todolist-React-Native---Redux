@@ -22,14 +22,21 @@ const settingsSlice = createSlice({
 
   reducers: {
     setNotification(state, action) {
-      const setting = state.find((item) => item.name === action.payload);
+      const setting = state.notifications.find(
+        (item) => item.name === action.payload
+      );
+      console.log(setting);
       if (setting) {
         // ✅ CORRECT: This object is still wrapped in a Proxy, so we can "mutate" it
         setting.checked = !setting.checked;
       }
     },
+    setAccount(state, action) {
+      const key = action.payload.type;
+      state.account[key] = action.payload.value;
+    },
   },
 });
 
-export const { setNotification } = settingsSlice.actions;
+export const { setNotification, setAccount } = settingsSlice.actions;
 export default settingsSlice.reducer;

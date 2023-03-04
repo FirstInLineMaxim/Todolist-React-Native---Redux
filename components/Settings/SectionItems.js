@@ -2,7 +2,7 @@ import { Switch, Text } from "@rneui/themed";
 import { StatusBar, StyleSheet, TextInput, View } from "react-native";
 import Icon from "react-native-vector-icons/Octicons";
 import { useDispatch, useSelector } from "react-redux";
-import { setNotification } from "../../store/settingsSlice";
+import { setAccount, setNotification } from "../../store/settingsSlice";
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#f1f1f1",
@@ -74,23 +74,28 @@ const styles = StyleSheet.create({
   },
 });
 
-const SettingsListSectionHeader = ({ title, icon }) => {
+//Renders the Sections
+const SettingsListSection = ({ title, icon, item, section }) => {
   return (
-    <View style={styles.sectionHeader}>
-      <View style={styles.sectionIcon}>
-        <Icon name={icon} size={30} color="#fff" />
+    <>
+      <View style={styles.sectionHeader}>
+        <View style={styles.sectionIcon}>
+          <Icon name={icon} size={30} color="#fff" />
+        </View>
+        <Text style={styles.sectionTitle}>{title}</Text>
       </View>
-      <Text style={styles.sectionTitle}>{title}</Text>
-    </View>
+      {item.map((ele, i) => (
+        <RenderItem item={ele} index={i} section={section} />
+      ))}
+    </>
   );
 };
 //SectionHeader Component
-const renderSectionHeader = ({ section: { title, icon } }) => {
-  return <SettingsListSectionHeader icon={icon} title={title} />;
-};
-const renderItem = ({ item, index, section }) => {
+
+const RenderItem = ({ item, index, section }) => {
   const isFirstElement = index === 0;
   const isLastElement = index === section.data.length - 1;
+  console.log("renderItem");
   return (
     <View
       style={
@@ -106,7 +111,7 @@ const renderItem = ({ item, index, section }) => {
       <View style={styles.itemNotification}>
         <Text style={styles.title}>{item.title}</Text>
         {section.title === "Notifications" && (
-          <NotificationSwitch name={item.type} />
+          <NotificationSwitch type={item.type} />
         )}
         {section.title === "Account" && (
           <AccountInput placeholder={item.title} type={item.type} />
@@ -117,22 +122,23 @@ const renderItem = ({ item, index, section }) => {
 };
 
 //Handels the Notification state
-function NotificationSwitch({ name }) {
+function NotificationSwitch({ type }) {
   const dispatch = useDispatch();
-  const setChecked = () => dispatch(setNotification(name));
-
   const { notifications } = useSelector((state) => state.settings);
-  const { checked } = notifications.find((entry) => entry.name === name);
+  //Handels Notifications
+  const setChecked = (type) => dispatch(setNotification(type));
 
-  return <Switch name={name} value={checked} onValueChange={setChecked} />;
+  const { checked } = notifications.find((entry) => entry.name === type);
+
+  return <Switch value={checked} onValueChange={() => setChecked(type)} />;
 }
-//Handels the Account State
+
 function AccountInput({ placeholder, type }) {
   const dispatch = useDispatch();
   const { account } = useSelector((state) => state.settings);
-  console.log(account[type]);
-  //   const value = account.find((entry) => entry === type);
-
+  //Handels Notifications
+  const setChecked = (type, value) => dispatch(setAccount(type, value));
+  const value = account[type];
   return (
     <View
       style={{
@@ -140,12 +146,13 @@ function AccountInput({ placeholder, type }) {
       }}
     >
       <TextInput
+        value={value}
+        onChangeText={(value) => setChecked({ type, value })}
         selectionColor={"#df6c36"}
         style={styles.itemAccount}
-        value={account[type]}
         placeholder={placeholder}
       />
     </View>
   );
 }
-export { renderItem, renderSectionHeader, SettingsListSectionHeader };
+export { RenderItem, SettingsListSection };

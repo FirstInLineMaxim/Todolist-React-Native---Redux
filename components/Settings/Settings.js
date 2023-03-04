@@ -1,15 +1,17 @@
-import { Switch } from "@rneui/themed";
 import React from "react";
 import {
   StyleSheet,
   View,
   SafeAreaView,
   SectionList,
-  StatusBar,
+  ScrollView,
 } from "react-native";
-import { useDispatch } from "react-redux";
-import { setNotification } from "../../store/settingsSlice";
-import { renderItem, renderSectionHeader } from "./SectionItems";
+import {
+  renderItem,
+  renderSectionHeader,
+  SettingsListSection,
+  SettingsListSectionHeader,
+} from "./SectionItems";
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#f1f1f1",
@@ -91,14 +93,16 @@ const Settings = () => {
   ];
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        <SectionList
-          sections={DATA}
-          keyExtractor={(item, index) => item + index}
-          renderItem={renderItem}
-          renderSectionHeader={renderSectionHeader}
-        />
-      </View>
+      <ScrollView>
+        {DATA.map((item) => (
+          <SettingsListSection
+            section={item}
+            title={item.title}
+            icon={item.icon}
+            item={item.data}
+          />
+        ))}
+      </ScrollView>
     </SafeAreaView>
   );
 };
