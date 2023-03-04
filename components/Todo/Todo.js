@@ -1,6 +1,6 @@
 import { Text } from "@rneui/themed";
 import React, { useState } from "react";
-import { ScrollView, View } from "react-native";
+import { SafeAreaView, ScrollView, View } from "react-native";
 import TaskItem from "./TaskItem";
 import { StyleSheet } from "react-native";
 import InputKeyboard from "../InputKeyboard";
