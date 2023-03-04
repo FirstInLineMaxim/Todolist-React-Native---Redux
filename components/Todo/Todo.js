@@ -6,6 +6,7 @@ import { StyleSheet } from "react-native";
 import InputKeyboard from "../InputKeyboard";
 import { useDispatch, useSelector } from "react-redux";
 import { delTask, setChecked, setTasks } from "../../store/todoSlice";
+import NavTabs from "../NavTabs";
 /**
  * TODO:Make the list items swipable as a bonus
  * https://reactnativeelements.com/docs/components/listItem_swipeable#props
@@ -71,11 +72,10 @@ export default function Todo() {
   };
   return (
     <>
+      <NavTabs />
       <View style={styles.container}>
         <View style={styles.headingContainer}>
-          <Text style={styles.heading} onPress={addTask}>
-            TODO LIST
-          </Text>
+          <Text style={styles.heading}>TODO LIST</Text>
           <View style={styles.subtitleView}>
             <Text style={styles.subtitle}>Open Tasks:</Text>
             <Text style={styles.subtitleTasks}>

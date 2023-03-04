@@ -95,7 +95,7 @@ const SettingsListSection = ({ title, icon, item, section }) => {
 const RenderItem = ({ item, index, section }) => {
   const isFirstElement = index === 0;
   const isLastElement = index === section.data.length - 1;
-  console.log("renderItem");
+
   return (
     <View
       style={
@@ -137,7 +137,7 @@ function AccountInput({ placeholder, type }) {
   const dispatch = useDispatch();
   const { account } = useSelector((state) => state.settings);
   //Handels Notifications
-  const setChecked = (type, value) => dispatch(setAccount(type, value));
+  const setAccountInfo = (type, value) => dispatch(setAccount(type, value));
   const value = account[type];
   return (
     <View
@@ -147,7 +147,7 @@ function AccountInput({ placeholder, type }) {
     >
       <TextInput
         value={value}
-        onChangeText={(value) => setChecked({ type, value })}
+        onChangeText={(value) => setAccountInfo({ type, value })}
         selectionColor={"#df6c36"}
         style={styles.itemAccount}
         placeholder={placeholder}

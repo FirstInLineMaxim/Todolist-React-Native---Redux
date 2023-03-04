@@ -18,7 +18,6 @@ const App = () => {
     <NativeRouter>
       <Provider store={store}>
         <SafeAreaView style={AppStyle}>
-          <NavTabs />
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/todo" element={<Todo />} />

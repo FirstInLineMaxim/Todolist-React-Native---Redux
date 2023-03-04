@@ -6,6 +6,7 @@ import {
   SectionList,
   ScrollView,
 } from "react-native";
+import NavTabs from "../NavTabs";
 import {
   renderItem,
   renderSectionHeader,
@@ -92,19 +93,22 @@ const Settings = () => {
     },
   ];
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-        {DATA.map((item, i) => (
-          <SettingsListSection
-            key={i}
-            section={item}
-            title={item.title}
-            icon={item.icon}
-            item={item.data}
-          />
-        ))}
-      </ScrollView>
-    </SafeAreaView>
+    <>
+      <NavTabs />
+      <SafeAreaView style={styles.container}>
+        <ScrollView>
+          {DATA.map((item, i) => (
+            <SettingsListSection
+              key={i}
+              section={item}
+              title={item.title}
+              icon={item.icon}
+              item={item.data}
+            />
+          ))}
+        </ScrollView>
+      </SafeAreaView>
+    </>
   );
 };
 export default Settings;

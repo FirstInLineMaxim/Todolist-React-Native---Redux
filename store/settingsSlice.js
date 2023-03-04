@@ -7,11 +7,11 @@ const settingsSlice = createSlice({
   name: "settings",
   initialState: {
     account: {
-      username: "TestUsername",
-      firstname: "Maksim",
-      lastname: "Moltchanov",
-      email: "test@test.com",
-      phone: "+4917663428792",
+      username: "",
+      firstname: "",
+      lastname: "",
+      email: "",
+      phone: "",
     },
     notifications: [
       { name: "PUSH", checked: false },
