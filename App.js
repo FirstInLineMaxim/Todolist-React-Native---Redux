@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, StatusBar } from "react-native";
 import { Provider } from "react-redux";
 import { NativeRouter, Route, Routes } from "react-router-native";
 import NavTabs from "./components/NavTabs";
@@ -25,6 +25,6 @@ const App = () => {
 export default App;
 
 const AppStyle = {
-  top: 40,
+  paddingTop: StatusBar.currentHeight,
   flex: 1,
 };
