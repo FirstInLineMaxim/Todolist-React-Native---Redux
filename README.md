@@ -23,9 +23,11 @@ This is a simple TodoList app built using React Native and Redux. Users can log 
 - React Native
 - Redux
 
-## Contributing
+## Wallpaper
 
-Contributions are welcome! Please feel free to submit a pull request or open an issue if you encounter any problems.
+<img src="https://i.imgur.com/fstBNq8.png" width="23%"></img>  <img src="https://i.imgur.com/vey0fBU.png" width="23%"></img> <img src="https://i.imgur.com/S21pRd5.png" width="23%"></img> <img src="https://i.imgur.com/m0MQPnl.png" width="23%"></img> 
+        
+
 
 ## License
 
