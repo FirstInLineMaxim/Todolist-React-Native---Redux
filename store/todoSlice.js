@@ -23,8 +23,13 @@ const todoSlice = createSlice({
 
       return state.filter((ele) => ele.id !== id);
     },
+    editTask(state, action) {
+      const { newValue, id } = action.payload;
+      const todo = state.find((todo) => todo.id === id);
+      if (todo) todo.task = newValue;
+    },
   },
 });
 
-export const { setTasks, setChecked, delTask } = todoSlice.actions;
+export const { setTasks, setChecked, delTask, editTask } = todoSlice.actions;
 export default todoSlice.reducer;

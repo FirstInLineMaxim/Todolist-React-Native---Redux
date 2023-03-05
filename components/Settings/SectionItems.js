@@ -35,13 +35,13 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: "#fff",
     padding: 20,
-    marginVertical: 2,
+    marginVertical: 1,
     marginHorizontal: 15,
   },
   itemLast: {
     backgroundColor: "#fff",
     padding: 20,
-    marginVertical: 2,
+    marginVertical: 1,
     marginHorizontal: 15,
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   itemFirst: {
     backgroundColor: "#fff",
     padding: 20,
-    marginVertical: 2,
+    marginVertical: 1,
     marginHorizontal: 15,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,

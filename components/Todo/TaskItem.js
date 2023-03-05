@@ -1,15 +1,23 @@
 import { ListItem } from "@rneui/base";
 import { Button } from "@rneui/themed";
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, TextInput } from "react-native";
 
 const styles = StyleSheet.create({
+  undone: {
+    color: "black",
+  },
   done: {
     textDecorationLine: "line-through",
     color: "grey",
   },
 });
-export default function TaskItem({ data, handleCheck, deleteEntry }) {
+export default function TaskItem({
+  data,
+  handleCheck,
+  deleteEntry,
+  editEntry,
+}) {
   return (
     <ListItem.Swipeable
       leftContent={(reset) => (
@@ -31,7 +39,6 @@ export default function TaskItem({ data, handleCheck, deleteEntry }) {
     >
       <ListItem.CheckBox
         // Use ThemeProvider to change the defaults of the checkbox
-        // onPress={() => setTask()}
         iconType="material-community"
         checkedIcon="checkbox-marked"
         uncheckedIcon="checkbox-blank-outline"
@@ -39,9 +46,13 @@ export default function TaskItem({ data, handleCheck, deleteEntry }) {
         checked={data.checked}
       />
       <ListItem.Content>
-        <ListItem.Title style={data.checked && styles.done}>
-          {data.task}
-        </ListItem.Title>
+        <TextInput
+          onBlur={() => console.log("focus lost")}
+          value={data.task}
+          onChangeText={(e) => editEntry(data.id, e)}
+          style={data.checked ? styles.done : styles.undone}
+          editable={data.checked ? false : true}
+        />
       </ListItem.Content>
       <ListItem.Chevron />
     </ListItem.Swipeable>

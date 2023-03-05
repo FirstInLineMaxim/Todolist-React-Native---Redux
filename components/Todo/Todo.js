@@ -5,7 +5,7 @@ import TaskItem from "./TaskItem";
 import { StyleSheet } from "react-native";
 import InputKeyboard from "../InputKeyboard";
 import { useDispatch, useSelector } from "react-redux";
-import { delTask, setChecked, setTasks } from "../../store/todoSlice";
+import { delTask, setChecked, setTasks, editTask } from "../../store/todoSlice";
 import NavTabs from "../NavTabs";
 /**
  * TODO:Make the list items swipable as a bonus
@@ -59,11 +59,14 @@ export default function Todo() {
     dispatch(setTasks({ id: nextIndex(), task: task, checked: false }));
   };
   function deleteEntry(id) {
-    console.log("deleteEntry");
     dispatch(delTask(id));
   }
   function handleCheck(id) {
     dispatch(setChecked(id));
+  }
+  function editEntry(id, newValue) {
+    console.log("edit");
+    dispatch(editTask({ id: id, newValue }));
   }
   const openTasks = () => {
     const doneTasks = tasks.filter((ele) => ele.checked === true);
@@ -90,6 +93,7 @@ export default function Todo() {
                 key={entry.id}
                 deleteEntry={deleteEntry}
                 handleCheck={handleCheck}
+                editEntry={editEntry}
                 data={entry}
               />
             ))

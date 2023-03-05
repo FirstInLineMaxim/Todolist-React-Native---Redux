@@ -18,54 +18,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#f1f1f1",
     flex: 1,
   },
-  settings: {},
-  sectionHeader: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "baseline",
-    marginBottom: 5,
-    marginTop: 5,
-  },
-  sectionIcon: {
-    borderRadius: 15,
-    width: 50,
-    height: 50,
-    justifyContent: "center",
-    alignItems: "center",
-    marginRight: 10,
-    backgroundColor: "#df6c36",
-  },
-  sectionTitle: {
-    fontSize: 32,
-  },
-  item: {
-    backgroundColor: "#fff",
-    padding: 20,
-    marginVertical: 2,
-  },
-  itemLast: {
-    backgroundColor: "#fff",
-    padding: 20,
-    marginVertical: 2,
-    borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15,
-  },
-  itemFirst: {
-    backgroundColor: "#fff",
-    padding: 20,
-    marginVertical: 2,
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
-  },
-  itemNotification: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-
-  title: {
-    fontSize: 24,
-  },
 });
 
 const Settings = () => {
