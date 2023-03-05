@@ -15,8 +15,7 @@ This is a simple TodoList app built using React Native and Redux. Users can log 
 3. To add a new item to the TodoList, the user can tap on the "+" button in the top right corner and fill out the form.
 4. To delete an item, the user can swipe left on the item they wish to delete.
 5. To check off an item, the user can tap on the checkbox next to the item.
-6. The user can access the settings tab by tapping on the gear icon in the bottom right corner.
-7. In the settings tab, the user can adjust their preferences, such as the color scheme of the app.
+6. The user can access the settings tab by tapping on the navbar in the Top.
 
 ## Technologies Used
 
