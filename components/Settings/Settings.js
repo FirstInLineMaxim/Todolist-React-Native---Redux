@@ -94,7 +94,6 @@ const Settings = () => {
   ];
   return (
     <>
-      <NavTabs />
       <SafeAreaView style={styles.container}>
         <ScrollView>
           {DATA.map((item, i) => (

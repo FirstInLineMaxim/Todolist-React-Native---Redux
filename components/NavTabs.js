@@ -2,15 +2,17 @@ import { Icon } from "@rneui/base";
 import { Tab } from "@rneui/themed";
 import { useState } from "react";
 import { Text } from "react-native";
-import { useNavigate } from "react-router-native";
+import { Outlet, useNavigate } from "react-router-native";
 
 //switch statement that uses tab index to return the path
 const getPath = (index) => {
   switch (index) {
     case 0:
-      return "/todo";
+      //Goes to TODOPAge
+      return "/app";
     case 1:
-      return "/settings";
+      //Settings which is /app/settings
+      return "settings";
     default:
       return;
   }
@@ -63,6 +65,7 @@ function NavTabs() {
           <Text>Settings</Text>
         </Tab.Item>
       </Tab>
+      <Outlet />
     </>
   );
 }

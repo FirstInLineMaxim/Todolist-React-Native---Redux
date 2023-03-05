@@ -72,7 +72,6 @@ export default function Todo() {
   };
   return (
     <>
-      <NavTabs />
       <View style={styles.container}>
         <View style={styles.headingContainer}>
           <Text style={styles.heading}>TODO LIST</Text>

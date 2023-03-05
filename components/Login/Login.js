@@ -13,11 +13,8 @@ import { Navigate, useNavigate } from "react-router-native";
 import loginScreenImage from "../../assets/loginScreen.jpg";
 import { setAccount } from "../../store/settingsSlice";
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  container: {},
   imageContainer: {
-    flex: 1,
     justifyContent: "space-between",
     paddingHorizontal: 20,
     position: "absolute",
@@ -109,7 +106,7 @@ export default function Login() {
               alignSelf: "center",
               marginVertical: 10,
             }}
-            onPress={() => navigate("/todo")}
+            onPress={() => navigate("app")}
             titleStyle={{ fontWeight: "bold" }}
           />
         </ImageBackground>
